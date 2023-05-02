@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createPortal } from 'react-dom';
-import styles from './styles.module.css';
+import styles from './modal.module.css';
 
 interface ModalProps {
   children?: React.ReactNode;
@@ -14,7 +14,9 @@ function Modal({ children, isModalOpen = false, closeModal }: ModalProps) {
       {isModalOpen && (
         <>
           <div className={styles['modal-backdrop']} onClick={closeModal} />
-          <div className={styles['modal-wrapper']}>{children}</div>
+          <div role='dialog' className={styles['modal-wrapper']}>
+            {children}
+          </div>
         </>
       )}
     </>,
